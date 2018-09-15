@@ -1,5 +1,27 @@
-// PLEASE DON'T change function name
 module.exports = function makeExchange(currency) {
-    // Your code goes here!
-    // Return an object containing the minimum number of coins needed to make change
+  
+   var myCoin = new Object();
+
+    if(currency <= 0) {
+        return myCoin;
+    } else if(currency > 10000 ) {
+        myCoin.error = "You are rich, my friend! We don't have so much coins for exchange";
+    } else {
+   
+        var constCoin = {
+            H: 50,
+            Q: 25,
+            D: 10,
+            N: 5,
+            P: 1		
+        };
+    
+        for (var key in constCoin) {
+            if(constCoin[key] <= currency) {
+                myCoin[key] = Math.trunc(currency/constCoin[key])
+                currency = currency%constCoin[key];
+            }
+        }
+    }
+   return myCoin;
 }
