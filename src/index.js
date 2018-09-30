@@ -1,6 +1,6 @@
 module.exports = function makeExchange(currency) {
   
-   var myCoin = new Object();
+   const myCoin = {};
 
     if(currency <= 0) {
         return myCoin;
@@ -8,7 +8,7 @@ module.exports = function makeExchange(currency) {
         myCoin.error = "You are rich, my friend! We don't have so much coins for exchange";
     } else {
    
-        var constCoin = {
+        const constCoin = {
             H: 50,
             Q: 25,
             D: 10,
@@ -16,7 +16,7 @@ module.exports = function makeExchange(currency) {
             P: 1		
         };
     
-        for (var key in constCoin) {
+        for (let key in constCoin) {
             if(constCoin[key] <= currency) {
                 myCoin[key] = Math.trunc(currency/constCoin[key])
                 currency = currency%constCoin[key];
